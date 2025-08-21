@@ -915,7 +915,7 @@ INLINE UINT8 DEC(struct z280_state *cpustate, UINT8 value)
 #define EX_AF {                                                 \
 	union PAIR tmp;                                                   \
 	tmp = cpustate->AF; cpustate->AF = cpustate->AF2; cpustate->AF2 = tmp;          \
-	cpustate->AF2inuse = !!cpustate->AF2inuse;                  \
+	cpustate->AF2inuse = ~cpustate->AF2inuse;                  \
 }
 
 /***************************************************************
@@ -934,7 +934,7 @@ INLINE UINT8 DEC(struct z280_state *cpustate, UINT8 value)
 	tmp = cpustate->BC; cpustate->BC = cpustate->BC2; cpustate->BC2 = tmp;          \
 	tmp = cpustate->DE; cpustate->DE = cpustate->DE2; cpustate->DE2 = tmp;          \
 	tmp = cpustate->HL; cpustate->HL = cpustate->HL2; cpustate->HL2 = tmp;          \
-	cpustate->BC2inuse = !!cpustate->BC2inuse;                  \
+	cpustate->BC2inuse = ~cpustate->BC2inuse;                  \
 }
 
 /***************************************************************
